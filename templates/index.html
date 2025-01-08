@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reconnaissance Faciale</title>
+    <!-- Lien vers le fichier CSS externe -->
+    <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet">
+    
+    <!-- Importation de Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Reconnaissance Faciale</h1>
+        
+        <form method="POST" enctype="multipart/form-data">
+            <input type="file" name="file" accept="image/*" required>
+            <button type="submit">Soumettre</button>
+        </form>
+        
+        {% if img_data %}
+            <div class="image-container">
+                <h2>Image avec Reconnaissance :</h2>
+                <h3>____________________________</h3>
+                <img src="data:image/jpeg;base64,{{ img_data }}" alt="Image avec reconnaissance faciale">
+            </div>
+        {% endif %}
+    </div>
+
+    <!-- Lien vers le fichier JS externe -->
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+</body>
+
+</html>
